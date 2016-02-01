@@ -1,0 +1,213 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% Formelsammlung von LaTeX4EI									
+%
+% @encode: 	UTF-8, tabwidth = 4, newline = LF
+% @author:	Lukas Kompatscher
+% @date:		
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+%-------------------------------------------%
+%  Stochastische Signale MATLAB Praktikum	%
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+
+% Document Class ===============================================================
+\documentclass[english]{latex4ei/latex4ei_sheet}
+
+% set document information
+\title{Stochastische \\ Signale MATLAB}
+\author{LaTeX4EI}							% optional, delete if unchanged
+\myemail{lukas.kompatscher@tum.de}			% optional, delete if unchanged
+
+
+\usepackage{listings}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+	%basicstyle=\color{red},
+	breaklines=true,%
+	morekeywords={matlab2tikz},
+	keywordstyle=\color{blue},%
+	morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+	identifierstyle=\color{black},%
+	stringstyle=\color{mylilas},
+	commentstyle=\color{mygreen},%
+	showstringspaces=false,%without this there will be a symbol in the places where there is a space
+%	numbers=left,
+	numberstyle={\tiny \color{black}},% size of the numbers
+	numbersep=9pt, % this defines how far the numbers are from the text
+	emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+	%emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+
+% DOCUMENT_BEGIN ===============================================================
+\begin{document}
+
+\maketitle
+
+% SECTION ======================================================================
+\section{Allgemeine Befehle}
+% ==============================================================================
+
+\begin{sectionbox}
+	\subsection{Standardbefehle}
+	\begin{tablebox}{ll}
+		Befehl & Funktion\\ \cmrule
+		save(\textit{filename, variable}) & speichert \textit{variable} in matfile\\
+		load(\textit{filename}) & lädt Variable aus matfiel \\
+		clear \textit{variable} & löscht \textit{variable}\\
+		clear all & löscht alle Variablen im Workspace\\
+		clc & löscht Inhalt des Kommandofensters\\
+		doc \textit{expression} & Hilfedatei zu \textit{expression}\\
+		help \textit{expression} & Kurzhilfe zu \textit{expression} \\
+
+	\end{tablebox}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Datentypkonvertierung (Karsten)}
+	\begin{tablebox}{ll}
+		
+		Befehl & Funktion \\\cmrule
+		double(\textit{array}) & Umwandlung von \textit{array} in double\\
+		
+	\end{tablebox}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Allgemeine Rechenoperationen}
+	\begin{tablebox}{ll}
+		
+		Befehl & Funktion \\\cmrule
+		mod(x,y) & x modulo y (immer positiv)\\
+		rem(x,y) & x modulo y (vorzeichenabhängig)\\
+		sqrt(x) & $ \sqrt{x}$\\
+		floor(x) & Abrunden auf Integer\\
+		ceil(x) & Aufrunden auf Integer\\
+		sum(x) & Summe über Werte des Vektors x\\
+		prod(x) & Produkt über Werte des Vektors x\\
+		min(x) & kleinster Wert des Vektors x\\
+		max(x) & größter Wert des Vektors x\\
+		all(x) & 1 für keine 0 in Vektor x\\
+		any(x) & 1 für eine Nicht-0 in Vektor x\\
+		
+	\end{tablebox}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Trigonometrische Funktionen}
+	\begin{tablebox}{ll}
+		
+		Befehl & Funktion \\\cmrule
+		sin(x) , cos(x), tan(x) & x in Bogenmaß!\\
+		sind(x), cosd(x), tand(x) & x in Grad!\\
+		asin(x), acos(x), atan(x) & Arcusfunktionen (Rad)\\
+		asind(x), acosd(x), antans(x) & Arcusfunktionen (Grad)\\
+		
+	\end{tablebox}
+\end{sectionbox}
+
+
+\begin{sectionbox}
+	\subsection{Komplexe Zahlen}
+	\begin{tablebox}{ll}
+		
+		Befehl & Funktion \\\cmrule
+		complex(a,b) & $a+jb$ \\
+		real(z) & Realteil von z\\
+		imag(z) & Imaginärteil von z\\
+		abs(z) & Betrag/Komplexe Amplitude von z\\
+		angle(z) & Phase von z\\
+		conj(z) & konjugiert komplex von z\\
+		
+	\end{tablebox}
+\end{sectionbox}
+
+\section{Matrizzenrechnung}
+\begin{sectionbox}
+	\subsection{Rechenoperationen}
+	\begin{tablebox}{ll}
+		Befehl & Funktion \\\cmrule
+		{[}a b c{]} & Zeilenvektor\\
+		{[}a; b; c{]} & Spaltenvektor\\
+		{[}a b c; d e f; g h i{]} & 3x3-Matrix\\
+		inv($\ma A$) & inverse Matrix von $\ma A$\\
+		$\ma A$' & $\ma A^\top$\\
+		$\ma A\setminus \vec b $ & löst $\ma A \vec x= \vec b$\\
+		$\ma A$(m,n) & Element $\ma A_{m,n}$\\
+		$\ma A$(m,:) & m. Zeile\\
+		$\ma A$(:,n) & n. Spalte\\
+		find($\ma A$) & lokalisiert Nicht-Null-Elemente (Indizes)\\
+		det($\ma A$) & Determinante von A \\
+		a:b:c & Vektor von a bis c mit Schrittweite b\\
+		linspace(a,b,n) & n Werte im gleichen Abstand von a bis b\\
+		norm(x) & eukl. Norm des Vektors x\\
+		$[\ma L \ma R \ma P ] = \text{lu}(\ma A)$ &(LR-) Zerlegung von A in Dreiecksmatrizen \\
+		$[\ma Q \ma R] = \text{qr}(\ma A)$& QR-Zerlegung von A\\
+	\end{tablebox}
+	
+	Komponentenweises Rechnen durch einen Punkt vor einem Operator\\
+	Bsp: $\ma A$.\^{}2 quadriert jedes Element der Matrix $\ma A$\\
+	Inlinefunktion: @(x)(f(x))\\
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Spezielle Matrizzen}
+	\begin{tablebox}{ll}
+		Befehl & Funktion \\\cmrule
+		eye(m,n) & mxn Einheitsmatrix\\
+		zeros(m,n) & mxn 0-Matrix\\
+		ones(m,n) & mxn 1-Matrix\\
+		diag([a b]) & Diagonalmatrix mit [a b] auf Diagonale\\
+		rand(m,n) & mxn Zufallsmatrix (Werte: 0-1)\\
+		randi(imax,m,n) & integer Zufallsmatrix mit max. imax\\
+		
+	\end{tablebox}
+\end{sectionbox}
+
+\section{Schleiflab}
+\begin{sectionbox}
+	\begin{tablebox}{lr}
+		while: & for: \\ \trule
+		\emph{while} expression & \emph{for} i=0:1:20\\
+		statements & statements \\
+		\emph{end} & \emph{end}\\
+	\end{tablebox}
+	Schleife vorzeitig verlassen mit break
+\end{sectionbox}
+
+
+%=======================================================================
+\section{Plot}
+%=======================================================================
+
+\subsection{2D Plots}
+
+\begin{sectionbox}
+	\begin{lstlisting}
+	figure(1);				% new figure
+	clf;					% clear old figures
+	plot(x, y, 'k');		% plot y(x) in black 'k'
+	hold on;				% more plots in same figure
+	plot(x, z, 'ro')		% plot z(x) in red circles
+	legend('y', 'z')		% names of plots
+	hold off;
+	\end{lstlisting}
+\end{sectionbox}
+
+% SECTION ======================================================================
+\section{Woche 1}
+% ==============================================================================
+\begin{sectionbox}
+	\subsection{c Programming Language}
+
+	\lstinputlisting{my_pdf.m}
+\end{sectionbox}
+
+
+
+% DOCUMENT_END =================================================================
+\end{document}
