@@ -292,15 +292,38 @@
 \end{sectionbox}
 
 % SECTION ======================================================================
-\section{Bild und Tonverabeitung}
+\section{Signalverarbeitung}
 % ==============================================================================
 \begin{sectionbox}
 	\subsection{Audiosignalverarbeitung}
 	
-	\begin{tablebox}{ll}
+	\begin{tablebox}{lp{0.65\textwidth}}
 		Befehl & Funktion\\ \cmrule
-		[a,b]=audioread('....') & Liest Audiodatei in Vektor a ein (Abtastrate b)
+		[a,b]=audioread('....') & Liest Audiodatei in Vektor a ein (Abtastrate b)\\
+		sound(x,b) & Spielt das Signal in Vektor x(Abtastrate b) ab\\
+		buffer(x,n) & Teilt Signalvektor x in nichtüberlappende Frames der Länge n\\
 	\end{tablebox}
+	
+	\subsubsection{Lineare Systeme}
+	\begin{tablebox}{lp{0.65\textwidth}}
+		Befehl & Funktion\\ \cmrule
+		conv(x,y) & Faltung zwischen Vektor x und y \\
+	\end{tablebox}
+\end{sectionbox}
+
+
+
+% SECTION ======================================================================
+
+\section{Begriffe}
+\begin{sectionbox}
+	\paragraph{Ergodisch}
+	Eine Zufallsfolge heißt ergodisch, wenn Mittelwerte über die Zeit (für
+	eine einzelne gegebene Realisierung der Folge) zum gleichen Ergebnis führen wie
+	Erwartungswertbildung (für einen einzelnen Zeitpunkt).
+	\paragraph{Klingonisch}
+	Die klingonische Sprache ist eine ursprünglich in Kronos beheimatete Sprache.
+	
 \end{sectionbox}
 
 
