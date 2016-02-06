@@ -19,7 +19,6 @@
 \author{LaTeX4EI}			
 \myemail{lukas.kompatscher@tum.de}		
 
-
 \usepackage{listings}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
@@ -67,15 +66,15 @@
 	\end{tablebox}
 \end{sectionbox}
 
-\begin{sectionbox}
-	\subsection{Datentypkonvertierung (Karsten)}
-	\begin{tablebox}{ll}
-		
-		Befehl & Funktion \\\cmrule
-		double(\textit{array}) & Umwandlung von \textit{array} in double\\
-		
-	\end{tablebox}
-\end{sectionbox}
+%\begin{sectionbox}
+%	\subsection{Datentypkonvertierung (Karsten)}
+%	\begin{tablebox}{ll}
+%		
+%		Befehl & Funktion \\\cmrule
+%		double(\textit{array}) & Umwandlung von \textit{array} in double\\
+%		
+%	\end{tablebox}
+%\end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Allgemeine Rechenoperationen}
@@ -85,6 +84,8 @@
 		mod(x,y) & x modulo y (immer positiv)\\
 		rem(x,y) & x modulo y (vorzeichenabhängig)\\
 		sqrt(x) & $ \sqrt{x}$\\
+		exp(x) & $e^x$\\
+		log(x) & Natürlicher Logarithmus $\ln(x)$\\
 		floor(x) & Abrunden auf Integer\\
 		ceil(x) & Aufrunden auf Integer\\
 		sum(x) & Summe über Werte des Vektors x\\
@@ -93,7 +94,8 @@
 		max(x) & größter Wert des Vektors x\\
 		all(x) & 1 für keine 0 in Vektor x\\
 		any(x) & 1 für eine Nicht-0 in Vektor x\\
-		mean(x) & Mittelwert des Vektors x
+		mean(x) & Mittelwert des Vektors x\\
+		sign(x) & Vorzeichen von x, 0 wenn x=0\\
 		
 	\end{tablebox}
 \end{sectionbox}
@@ -103,8 +105,8 @@
 	\begin{tablebox}{ll}
 		
 		Befehl & Funktion \\\cmrule
-		sin(x) , cos(x), tan(x) & x in Bogenmaß!\\
-		sind(x), cosd(x), tand(x) & x in Grad!\\
+		sin(x) , cos(x), tan(x) & x in Bogenmaß\\
+		sind(x), cosd(x), tand(x) & x in Grad\\
 		asin(x), acos(x), atan(x) & Arcusfunktionen (Rad)\\
 		asind(x), acosd(x), antans(x) & Arcusfunktionen (Grad)\\
 		
@@ -127,28 +129,33 @@
 	\end{tablebox}
 \end{sectionbox}
 
-\section{Matrizzenrechnung}
+\section{Matrizenrechnung}
 \begin{sectionbox}
 	\subsection{Rechenoperationen}
 	\begin{tablebox}{ll}
 		Befehl & Funktion \\\cmrule
-		{[}a b c{]} & Zeilenvektor\\
-		{[}a; b; c{]} & Spaltenvektor\\
+		{[}a b c{]} & Zeilenvektor (bzw. vertikales aneinanderreihen)\\
+		{[}a; b; c{]} & Spaltenvektor (bzw. horizontales aneinanderreihen)\\
 		{[}a b c; d e f; g h i{]} & 3x3-Matrix\\
 		{[}a b{]} = size(\ma A) & Dimensionen der Matrix (a Zeilen, b Spalten)\\
 		inv($\ma A$) & inverse Matrix von $\ma A$\\
-		$\ma A$' & $\ma A^\top$\\
+		$\ma A$' & $\ma A^\top$ (transponiert konjugiert komplex)\\
+		$\ma A$.' & $\ma A^\top$ (transponiert nur)\\
 		$\ma A\setminus \vec b $ & löst $\ma A \vec x= \vec b$\\
 		$\ma A$(m,n) & Element $\ma A_{m,n}$\\
 		$\ma A$(m,:) & m-te Zeile\\
 		$\ma A$(:,n) & n-te Spalte\\
+		$\ma A$(Bedingung) & Alle Element in A, auf die die Bedingung zutrifft\\
 		find($\ma A$) & lokalisiert Nicht-Null-Elemente (Indizes)\\
 		det($\ma A$) & Determinante von A \\
 		a:b:c & Vektor von a bis c mit Schrittweite b\\
 		linspace(a,b,n) & n Werte im gleichen Abstand von a bis b\\
 		norm(x) & eukl. Norm des Vektors x\\
-		$[\ma L \ma R \ma P ] = \text{lu}(\ma A)$ &(LR-) Zerlegung von A in Dreiecksmatrizen \\
-		$[\ma Q \ma R] = \text{qr}(\ma A)$& QR-Zerlegung von A\\
+		sum($\ma A$) & Summer der Werte über Spaltenwerte\\
+		sum($\ma A$,2) & Summer der Werte über Zeilenwerte\\
+		mean($\ma A$) & Mittelwert der Spaltenwerte\\
+		mean($\ma A$,2) & Mittelwert der Zeilenwerte\\
+		numel($\ma A$) & Anzahl der Elemente in $\ma A$\\
 	\end{tablebox}
 	
 	Komponentenweises Rechnen durch einen Punkt vor einem Operator\\
@@ -157,7 +164,7 @@
 \end{sectionbox}
 
 \begin{sectionbox}
-	\subsection{Spezielle Matrizzen}
+	\subsection{Spezielle Matrizen}
 	\begin{tablebox}{ll}
 		Befehl & Funktion \\\cmrule
 		eye(m,n) & $m\times n$ Einheitsmatrix\\
@@ -166,13 +173,13 @@
 		diag([a b]) & Diagonalmatrix mit [a b] auf Diagonale\\
 		rand(m,n) & $m\times n$ Zufallsmatrix (Werte: 0-1)\\
 		randi(imax,m,n) & integer Zufallsmatrix mit max. imax\\
-		
+		magic(n) & $n\times n$ magisches Quadrat
 	\end{tablebox}
 \end{sectionbox}
 
 \section{Schleiflab}
 \begin{sectionbox}
-	\begin{tablebox}{lr}
+	\begin{tablebox}{p{0.5\textwidth}p{0.5\textwidth}}
 		while: & for: \\ \cmrule
 		\emph{while} expression & \emph{for} i=0:1:20\\
 		statements & statements \\
@@ -181,15 +188,23 @@
 	Schleife vorzeitig verlassen mit break
 \end{sectionbox}
 
+\vfill
 
-%=======================================================================
-\section{Plot}
-%=======================================================================
-
-\subsection{2D Plots}
-
+\section{Plotten}
 \begin{sectionbox}
-	\begin{lstlisting}
+	\begin{tablebox}{ll}
+		Befehl & Funktion \\\cmrule
+		plot(x,y,'prop') & Plottet x und y mit Farbe/Symbol aus 'prob'\\
+		stem(x) & Plottet diskrete x Werte (nicht verbunden)\\
+		bar(x,y) & Plottet x und y in einem Balkendiagramm\\
+		xlim([a b]) & Begrenzt Bereich der x-Achse auf [a,b]\\
+		ylim([a b]) & Begrenzt Bereich der y-Achse auf [a,b]\\
+		xlabel('Name') & Benennt x-Achse\\
+		ylabel('Name') & Benennt y-Achse\\
+		titel('Titel') & Tituliert den Plot\\
+	\end{tablebox}
+	\emph{Beispiel}
+	\begin{lstlisting}[gobble=4]
 	figure(1);				% new figure
 	clf;					% clear old figures
 	plot(x, y, 'k');		% plot y(x) in black 'k'
@@ -213,8 +228,8 @@
 		gamrnd(k,t,m,n) & gammaverteile ZV, shape k, scale t\\
 		binornd(n,p,m,n) &  Binomialverteilung mit Parameter n, p\\
 		binornd(1,p,m,n) &  Bernoulliverteilung mit Wahrscheinlichkeit p\\
-		geornd(p,m,n) & Geometrische Verteilung mit Wahrscheinlichkeit p\\
-		exprnd(1/lambda,m,n) & Exponentialverteilung mit Parameter lambda\\
+		geornd(p,m,n) & Geometrische Verteilung mit Wahrsch. p\\
+		exprnd(1/lambda,m,n) & Exponentialverteilung mit Parameter $\lambda$\\
 	\end{tablebox}
 	\emph{Beispiele:}
 	\begin{tablebox}{ll}
@@ -230,36 +245,64 @@
 	\subsection{Wahrscheinlichkeitsdichtefunktion (PDF) $f_{\X}(x)$}
 	
 	\begin{tablebox}{ll}
-		Befehl & PDF einer \dots \\\cmrule
-		unifpdf(X,A,B) & Gleichverteilen ZV an X im Intervall [A,B]\\
-		normpdf(X,mu,sigma) & Normalverteilung mit Parameter mu und sigma\\
-		gampdf(X,A,B) & Gammaverteilung an X mit shape A und scale B\\
+		Befehl & PDF an den Stellen x einer \dots \\\cmrule
+		unifpdf(x,a,b) & Gleichverteilung im Intervall [a,b]\\
+		poisspdf(x,lambda) & Poissonverteilung mit Parameter $\lambda$\\
+		normpdf(x,mu,sigma) & Normalverteilung mit Parameter mu und sigma\\
+		gampdf(x,a,b) & Gammaverteilung mit shape a und scale b\\
 		
 	\end{tablebox}
-	
+\end{sectionbox}
+
+\begin{sectionbox}
 	\subsection{Kommulative Verteilungsfunktion (CDF) $F_{\X}(x)$}
 	\begin{tablebox}{ll}
-		Befehl & CDF einer \dots \\\cmrule
-		poisscdf(X, lambda) & Poissonverteilung an X mit Parameter lambda\\
-		normcdf(X,mu,sigma) & Normalverteilung an X mit Parameter $\mu$ und $\sigma$\\
+		Befehl & CDF an den Stellen x einer \dots \\\cmrule
+		unifcdf(x,a,b) & Gleichverteilung im Intervall [a,b]\\
+		poisscdf(X,lambda) & Poissonverteilung mit Parameter $\lambda$\\
+		normcdf(X,mu,sigma) & Normalverteilung mit Parameter $\mu$ und $\sigma$\\
 		cdfplot(X) & Schätzt und plottet CDF von X\\
 	\end{tablebox}
 \end{sectionbox}
 
 
+% SECTION ======================================================================
+\section{Analyse von Zufallsvariablen}
+% ==============================================================================
 \begin{sectionbox}
-	\subsection{Schätzung von Paramtern von Realisierungen einer ZV X}
+	\subsection{Schätzung von Paramtern einer Zufallsvariable X}
 	x ist ein Vektor von Realisierungen von X
 	\begin{tablebox}{ll}
 		Befehl & Funktion\\ \cmrule
 		mean(x) & Schätzt Erwartungswert $\mu$ der ZV X\\
 		var(x) & Schätzt Varianz $\Var(X)$ der ZV X\\
-		sqrt(var(x)) & Schätzt $\sqrt{\Var(X)} = \sigma$ der ZV X\\
+		std(A) & Schätzt die Standardabweichung $\sigma$ der ZV X\\
 		lenght(x) & Anzahl der Realisierungen der ZV X\\
 		mean(x.\^{}3) & Schätzung des 3. Moments der ZV X
 	\end{tablebox}
-	
 \end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Histogramm}
+	\begin{tablebox}{lp{0.7\textwidth}}
+		Befehl & Funktion \\ \cmrule
+		hist(A,b) & Teilt A in b gleiche Bereiche (Bins )und zählt die Elemente im jeweiligen Bin\\
+		bar(hist(...)) & Erstellt ein Balkendiagramm des Histogramms
+	\end{tablebox}
+\end{sectionbox}
+
+% SECTION ======================================================================
+\section{Bild und Tonverabeitung}
+% ==============================================================================
+\begin{sectionbox}
+	\subsection{Audiosignalverarbeitung}
+	
+	\begin{tablebox}{ll}
+		Befehl & Funktion\\ \cmrule
+		[a,b]=audioread('....') & Liest Audiodatei in Vektor a ein (Abtastrate b)
+	\end{tablebox}
+\end{sectionbox}
+
 
 % SECTION ======================================================================
 \section{Kapitel 1}
@@ -276,7 +319,7 @@
 % ==============================================================================
 \begin{sectionbox}
 	\subsection{Histogramm eines AWGN-Kanals}
-	\parbox{3cm}{
+	\parbox{3.3cm}{
 	\includegraphics[width = 3cm]{img/awgn-channel.png}
 	}
 	\parbox{4cm}{
@@ -355,3 +398,8 @@
 
 % DOCUMENT_END =================================================================
 \end{document}
+
+
+%TODO:
+% - ergodisch
+% - tic toc
