@@ -96,7 +96,7 @@
 		any(x) & 1 für eine Nicht-0 in Vektor x\\
 		mean(x) & Mittelwert des Vektors x\\
 		sign(x) & Vorzeichen von x, 0 wenn x=0\\
-		
+		abs(x) & Betrag von x\\
 	\end{tablebox}
 \end{sectionbox}
 
@@ -155,9 +155,11 @@
 		$\ma A$(m,:) & m-te Zeile\\
 		$\ma A$(:,n) & n-te Spalte\\
 		$\ma A$(Bedingung) & Alle Element in A, auf die die Bedingung zutrifft\\
-		find($\ma A$) & lokalisiert Nicht-Null-Elemente (Indizes)\\
-		det($\ma A$) & Determinante von A \\
-		a:b:c & Vektor von a bis c mit Schrittweite b\\
+		find(\ma A) & lokalisiert Nicht-Null-Elemente (Indizes)\\
+		det(\ma A) & Determinante von A \\
+		rank(\ma A) & Rang (Anzahl unabhängiger von A \\
+		\lbrack V,D \rbrack = eig(\ma A) & Eigenwerte (D) und Eigenvektoren (V) von A \\
+		(a:b:c) & Vektor von a bis c mit Schrittweite b\\
 		linspace(a,b,n) & n Werte im gleichen Abstand von a bis b\\
 		norm(x) & eukl. Norm des Vektors x\\
 		sum($\ma A$) & Summer der Werte über Spaltenwerte\\
@@ -201,14 +203,16 @@
 \begin{sectionbox}
 	\begin{tablebox}{ll}
 		Befehl & Funktion \\\cmrule
-		plot(x,y,'prop') & Plottet x und y mit Farbe/Symbol aus 'prob'\\
+		plot(x,y,'prop') & Plottet x und y mit Farbe/Symbol 'prop'\\
 		stem(x) & Plottet diskrete x Werte (nicht verbunden)\\
 		bar(x,y) & Plottet x und y in einem Balkendiagramm\\
 		xlim([a b]) & Begrenzt Bereich der x-Achse auf [a,b]\\
-		ylim([a b]) & Begrenzt Bereich der y-Achse auf [a,b]\\
+		ylim([c d]) & Begrenzt Bereich der y-Achse auf [c,d]\\
+		axis([a b c d]) & Kombination aus xlim + ylim \\
 		xlabel('Name') & Benennt x-Achse\\
 		ylabel('Name') & Benennt y-Achse\\
 		titel('Titel') & Tituliert den Plot\\
+		subplot(X,Y,Position) & mehrere plots in eine Figure \\
 	\end{tablebox}
 	\emph{Beispiel}
 	\begin{lstlisting}[gobble=4]
@@ -221,8 +225,6 @@
 	hold off;
 	\end{lstlisting}
 \end{sectionbox}
-
-\vfill
 
 % SECTION ======================================================================
 \section{Stochastische Zufallsvariablen}
@@ -309,7 +311,7 @@
 	\begin{tablebox}{lp{0.65\textwidth}}
 		Befehl & Funktion\\ \cmrule
 		[a,b]=audioread('....') & Liest Audiodatei in Vektor a ein (Abtastrate b)\\
-		sound(x,b) & Spielt das Signal in Vektor x(Abtastrate b) ab\\
+		sound(x,b) & Spielt das Signal in Vektor x (Abtastrate b) ab\\
 		buffer(x,n) & Teilt Signalvektor x in nichtüberlappende Frames der Länge n\\
 	\end{tablebox}
 	
