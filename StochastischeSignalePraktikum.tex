@@ -360,7 +360,9 @@
 		$\Y$ Ausgangssignal
 		}
 	\lstinputlisting{matlab/hist_out.m}
-
+\end{sectionbox}
+\begin{sectionbox}
+	\subsection{Detektion}
 	\textbf{Maximum-Likelihood-Detektion}
 	\[ \max_{\hat x \in \{0,1\}}f_{\Y|\X}(y|\hat x) \]
 	In unserem Fall: $\hat x = \begin{cases}
@@ -371,19 +373,26 @@
 	function xhat = ml_detector(y)
 	xhat=(y>0.5);
 	\end{lstlisting}
+	\textbf{Nachteil:} Ignoriert Wissen über die Eingangsverteilung \\\\
+
 	\textbf{Maximum-A-Posteriori-Detektion}
 	\[\max_{\hat x \in \{0,1\}} p_{\X|\Y}(\hat x|y)\] mit
 	\[p_{\X|\Y}(x|y)=\begin{cases}
 	 \frac{p f_{\Z}(y-1)}{f_{\Y}(y)} & x=1\\
 	\frac{(1-p)f_{\Z}(y)}{f_{\Y}(y)} & x=0\\
-	0 & sonst
+	0 & \text{sonst}
 	\end{cases} 
 	\Bigg\} = \frac{f_{\Y|\X}(y|x)p_{X}(x)}{f_{\Y}(y)}\]
 	\begin{lstlisting}[gobble=4]
 	function xhat = map_detector(y,p,sigma)
 	xhat=(p*normpdf(y-1,0,sigma)>(1-p)*normpdf(y,0,sigma));
 	\end{lstlisting}
-	\vspace{-7pt}
+	\textbf{Nachteil:} Die Verteilung der Zufallsvariable am Eingang muss bekannt sein\\
+	\\
+
+	\textbf{Spezialfall} der diskreten Gleichverteilung $p_{\X}(x)=\frac{1}{\abs{\Omega_{\X}}} \forall x \in \Omega_{\X}$:\\
+	$p_{\X}$ für alle x gleich $\to$ kann aus der Entscheidungsregel gestrichen
+	werden. ML äquivalent zu MAP
 \end{sectionbox}
 
 \section{Kapitel 4: Standardmodelle, Erwartungswert und Varianz}
