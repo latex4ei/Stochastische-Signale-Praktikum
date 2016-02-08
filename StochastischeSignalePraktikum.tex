@@ -411,6 +411,7 @@
 	0 & y\le \frac{1}{2}\\
 	1 & y > \frac{1}{2}
 	\end{cases}$
+	Nachteil: Ignoriert das Wissen über die Eingangsverteilung.\\
 	\begin{lstlisting}[gobble=4]
 	function xhat = ml_detector(y)
 	xhat=(y>0.5);
