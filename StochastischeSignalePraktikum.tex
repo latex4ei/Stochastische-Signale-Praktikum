@@ -16,7 +16,7 @@
 
 % set document information
 \title{Stochastische \\ Signale Praktikum}
-\author{LaTeX4EI}			
+\author{Lukas Kompatscher}			
 \myemail{lukas.kompatscher@tum.de}		
 
 \usepackage{listings}
@@ -95,24 +95,24 @@
 		all(x) & 1 für keine 0 in Vektor x\\
 		any(x) & 1 für eine Nicht-0 in Vektor x\\
 		mean(x) & Mittelwert des Vektors x\\
-		sign(x) & Vorzeichen von x, 0 wenn x=0\\
+		sign(x) & Vorzeichen von x (0 wenn x=0)\\
 		
 	\end{tablebox}
 \end{sectionbox}
 
 \begin{sectionbox}
-	\subsection{Trigonometrische Funktionen}
+	\subsection{Operatoren}
 	\begin{tablebox}{ll}
-		
-		Befehl & Funktion \\\cmrule
-		sin(x) , cos(x), tan(x) & x in Bogenmaß\\
-		sind(x), cosd(x), tand(x) & x in Grad\\
-		asin(x), acos(x), atan(x) & Arcusfunktionen (Rad)\\
-		asind(x), acosd(x), antans(x) & Arcusfunktionen (Grad)\\
-		
+		Operator & Funktion \\\cmrule
+		a\textgreater b & Gibt logisch 1 zurück wenn $a>b$, sonst 0\\
+		a\textgreater=b & Gibt logisch 1 zurück wenn $a\ge b$, sonst 0\\
+		a==b & Gibt logisch 1 zurück wenn $a=b$, sonst 0\\
+		a\textasciitilde =b & Gibt logisch 1 zurück wenn $a\ne b$, sonst 0\\
+		a*b & Matrix-Matrix-Multiplikation von a und b\\
+		a.*b & Elementenweise Multiplikation von a und b\\
+		a(a\textgreater=0) & Gibt Teilvektor von a zurück, wo der Wert $\ge 0$
 	\end{tablebox}
 \end{sectionbox}
-
 
 \begin{sectionbox}
 	\subsection{Komplexe Zahlen}
@@ -129,7 +129,21 @@
 	\end{tablebox}
 \end{sectionbox}
 
+\begin{sectionbox}
+	\subsection{Trigonometrische Funktionen}
+	\begin{tablebox}{ll}
+		Befehl & Funktion \\\cmrule
+		sin(x) , cos(x), tan(x) & x in Bogenmaß\\
+		sind(x), cosd(x), tand(x) & x in Grad\\
+		asin(x), acos(x), atan(x) & Arcusfunktionen (Rad)\\
+		asind(x), acosd(x), antans(x) & Arcusfunktionen (Grad)\\
+		
+	\end{tablebox}
+\end{sectionbox}
+
+% SECTION ======================================================================
 \section{Matrizenrechnung}
+% =============================================================================
 \begin{sectionbox}
 	\subsection{Rechenoperationen}
 	\begin{tablebox}{ll}
@@ -140,7 +154,7 @@
 		{[}a b{]} = size(\ma A) & Dimensionen der Matrix (a Zeilen, b Spalten)\\
 		inv($\ma A$) & inverse Matrix von $\ma A$\\
 		$\ma A$' & $\ma A^\top$ (transponiert konjugiert komplex)\\
-		$\ma A$.' & $\ma A^\top$ (transponiert nur)\\
+		$\ma A$.' & $\ma A^\top$ (transponiert)\\
 		$\ma A\setminus \vec b $ & löst $\ma A \vec x= \vec b$\\
 		$\ma A$(m,n) & Element $\ma A_{m,n}$\\
 		$\ma A$(m,:) & m-te Zeile\\
@@ -160,7 +174,7 @@
 	
 	Komponentenweises Rechnen durch einen Punkt vor einem Operator\\
 	Bsp: $\ma A$.\^{}2 quadriert jedes Element der Matrix $\ma A$\\
-	Inlinefunktion: @(x)(f(x))\\
+	Inlinefunktion: @(x)(f(x))
 \end{sectionbox}
 
 \begin{sectionbox}
@@ -170,14 +184,17 @@
 		eye(m,n) & $m\times n$ Einheitsmatrix\\
 		zeros(m,n) & $m\times n$ 0-Matrix\\
 		ones(m,n) & $m\times n$ 1-Matrix\\
-		diag([a b]) & Diagonalmatrix mit [a b] auf Diagonale\\
+		diag($\vec x$) & Diagonalmatrix mit den Werten von $\vec x$\\
 		rand(m,n) & $m\times n$ Zufallsmatrix (Werte: 0-1)\\
 		randi(imax,m,n) & integer Zufallsmatrix mit max. imax\\
 		magic(n) & $n\times n$ magisches Quadrat
 	\end{tablebox}
 \end{sectionbox}
 
+% SECTION ======================================================================
 \section{Schleiflab}
+% =============================================================================
+\vspace{-0.0em}
 \begin{sectionbox}
 	\begin{tablebox}{p{0.5\textwidth}p{0.5\textwidth}}
 		while: & for: \\ \cmrule
@@ -188,9 +205,9 @@
 	Schleife vorzeitig verlassen mit break
 \end{sectionbox}
 
-\vfill
-
+% SECTION ======================================================================
 \section{Plotten}
+% =============================================================================
 \begin{sectionbox}
 	\begin{tablebox}{ll}
 		Befehl & Funktion \\\cmrule
@@ -203,7 +220,7 @@
 		ylabel('Name') & Benennt y-Achse\\
 		titel('Titel') & Tituliert den Plot\\
 	\end{tablebox}
-	\emph{Beispiel}
+	\emph{Beispiel:}
 	\begin{lstlisting}[gobble=4]
 	figure(1);				% new figure
 	clf;					% clear old figures
@@ -237,7 +254,7 @@
 		2*rand+1 & gleichverteile ZV im Bereich [1,3]\\
 		plot(y,unifpdf((y-1)/2)/2) & plottet PDF der oberen ZV\\
 		plot(x,unifpdf(2*x)*2) & PDF einer gv. ZV im Bereich [0,0.5]\\
-		sigma*randn+mu & Normalverteilung $\mathcal N(\mu, \sigma^2)$
+		sigma*randn+mu & Realisierung der Normalv. $\mathcal N(\mu, \sigma^2)$
 	\end{tablebox}
 \end{sectionbox}
 
@@ -249,7 +266,7 @@
 		unifpdf(x,a,b) & Gleichverteilung im Intervall [a,b]\\
 		poisspdf(x,lambda) & Poissonverteilung mit Parameter $\lambda$\\
 		normpdf(x,mu,sigma) & Normalverteilung mit Parameter mu und sigma\\
-		gampdf(x,a,b) & Gammaverteilung mit shape a und scale b\\
+		gampdf(x,k,t) & Gammaverteilung mit shape k und scale t\\
 		
 	\end{tablebox}
 \end{sectionbox}
@@ -277,7 +294,7 @@
 		mean(x) & Schätzt Erwartungswert $\mu$ der ZV X\\
 		var(x) & Schätzt Varianz $\Var(X)$ der ZV X\\
 		std(A) & Schätzt die Standardabweichung $\sigma$ der ZV X\\
-		lenght(x) & Anzahl der Realisierungen der ZV X\\
+		length(x) & Anzahl der Realisierungen der ZV X\\
 		mean(x.\^{}3) & Schätzung des 3. Moments der ZV X
 	\end{tablebox}
 \end{sectionbox}
@@ -286,7 +303,10 @@
 	\subsection{Histogramm}
 	\begin{tablebox}{lp{0.7\textwidth}}
 		Befehl & Funktion \\ \cmrule
-		hist(A,b) & Teilt A in b gleiche Bereiche (Bins )und zählt die Elemente im jeweiligen Bin\\
+		hist(A) & Teilt A in 10 gleiche Bereiche (Bins) und zählt die Elemente im jeweiligen Bin\\
+		hist(A,b) & Teilt A in b gleiche Bereiche (Bins) und zählt die Elemente im jeweiligen Bin\\
+		hist(A,centers) & Zählt die Elemente in den Bins um den Einträgen in centers\\
+		\lbrack n,centers\rbrack =hist(...) & Gibt in Anzahl der Elemente in n zurück und die Position der Bins in centers\\
 		bar(hist(...)) & Erstellt ein Balkendiagramm des Histogramms
 	\end{tablebox}
 \end{sectionbox}
@@ -302,13 +322,29 @@
 		[a,b]=audioread('....') & Liest Audiodatei in Vektor a ein (Abtastrate b)\\
 		sound(x,b) & Spielt das Signal in Vektor x(Abtastrate b) ab\\
 		buffer(x,n) & Teilt Signalvektor x in nichtüberlappende Frames der Länge n\\
+		buffer(x,n,p) & Teilt Signalvektor x in Frames der Länge n die sich um p überlappen
 	\end{tablebox}
+	\emph{Beispiel:}
+	\begin{lstlisting}[gobble=4]
+	buffer(1:12,5,3)
+	%liefert ...
+	ans =
+	     0     0     2     4     6     8
+	     0     1     3     5     7     9
+	     0     2     4     6     8    10
+	     1     3     5     7     9    11
+	     2     4     6     8    10    12
+	\end{lstlisting}
 	
 	\subsubsection{Lineare Systeme}
 	\begin{tablebox}{lp{0.65\textwidth}}
 		Befehl & Funktion\\ \cmrule
 		conv(x,y) & Faltung zwischen Vektor x und y \\
 	\end{tablebox}
+%	\begin{lstlisting}[gobble=4]
+%%	
+%	\end{lstlisting}
+	conv(x,y) gibt einen Vektor der Länge length(x) + length(y) - 1 zurück
 \end{sectionbox}
 
 
@@ -336,6 +372,21 @@
 \end{sectionbox}
 
 
+% SECTION ======================================================================
+\section{Kapitel 2: Quantisierung und Transformation von ZV}
+% ==============================================================================
+\begin{sectionbox}
+	\subsection{Beispielaufgabe}
+	Gegeben sei eine Zufallsvariable $\X$, die im Intervall $[0, 1]$ gleichverteilt ist und eine Zufallsvariable $\Y=g(X)$, deren WDF mit der folgenden Funktion ausgewertet werden kann:
+	\begin{lstlisting}[gobble=4]
+	function f = mypdf(y)
+	f=unifpdf(exp(y)).*exp(y);	
+	\end{lstlisting}
+	\emph{Folgerungen:}\\
+	Die Funktion $g=g(x)=ln(x)$\\
+	1000 Realisierungen von $\Y$ erzeugen: y=log(rand(1000,1));\\
+\end{sectionbox}
+
 
 % SECTION ======================================================================
 \section{Kapitel 3: Bedingte Verteilung}
@@ -351,8 +402,10 @@
 		$\Y$ Ausgangssignal
 		}
 	\lstinputlisting{matlab/hist_out.m}
+\end{sectionbox}
 
-	\textbf{Maximum-Likelihood-Detektion}
+\begin{sectionbox}
+	\subsection{Maximum-Likelihood-Detektion}
 	\[ \max_{\hat x \in \{0,1\}}f_{\Y|\X}(y|\hat x) \]
 	In unserem Fall: $\hat x = \begin{cases}
 	0 & y\le \frac{1}{2}\\
@@ -362,7 +415,10 @@
 	function xhat = ml_detector(y)
 	xhat=(y>0.5);
 	\end{lstlisting}
-	\textbf{Maximum-A-Posteriori-Detektion}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Maximum-A-Posteriori-Detektion}
 	\[\max_{\hat x \in \{0,1\}} p_{\X|\Y}(\hat x|y)\] mit
 	\[p_{\X|\Y}(x|y)=\begin{cases}
 	 \frac{p f_{\Z}(y-1)}{f_{\Y}(y)} & x=1\\
@@ -410,14 +466,25 @@
 \begin{sectionbox}
 	\subsection{Realisierung einer Zufallsfolge}
 	$\X_{n+1}=\X_n+V_n \qquad \Y_{n+1}=\Y_n+W_n$ \\
-	$V_n$ und $W_n$ sind i.i.d. Gleichverteilung mit Intervall $[-\delta;\delta]$
+	$V_n$ und $W_n$ sind i.i.d. Gleichverteilung mit Intervall $[-\delta;\delta]$\\
+	Folgender Code aktualisiert die Positionen $(x_i,y_i)$ im Vektor pos
 	\begin{lstlisting}[gobble=4]
 	function pos=update_positions(pos,delta)
-	% Fuegen Sie hier Ihren Code ein
 	pos=pos+2*delta*(rand(size(pos))-0.5);
 	\end{lstlisting}
 \end{sectionbox}
 
+\section{Kapitel 6: Zufallsfolgen und lineare System}
+\begin{sectionbox}
+	\subsection{Signalgenerierung}
+	\begin{lstlisting}[gobble=4]
+	%Erstellt Sinussignal der Frequenz f1 mit der Amplitude A1,
+	%ueberlagert mit weissen Rauschen mit Parameter sigma
+	function x=create_signal(fS,T,f1,A1,sigma)
+	t=1:T*fS;
+	x=A1*sin(2*pi*f1/fS*t) + sigma*randn(1,fS*T);
+	\end{lstlisting}
+\end{sectionbox}
 
 % DOCUMENT_END =================================================================
 \end{document}

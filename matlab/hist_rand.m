@@ -1,9 +1,9 @@
 function x=hist_rand(N)
-% Erstellen Sie hier einen Vektor x mit N Realisierungen von X
+% Vektor x mit N Realisierungen von X (Gleichverteilung)
 x=rand(N,1);
 centers=0+1/40:1/20:1-1/40;
 counts=hist(x,centers);
-% Skalieren Sie hier die Variable counts gemaess den Vorgaben
+% Normierung von counts fuer eine PDF
 counts = counts/N*20;
 bar(centers,counts);
 xlabel('x')
