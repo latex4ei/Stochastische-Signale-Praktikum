@@ -222,7 +222,7 @@
 		xlabel('Name') & Benennt x-Achse\\
 		ylabel('Name') & Benennt y-Achse\\
 		titel('Titel') & Tituliert den Plot\\
-		subplot(X,Y,Position) & mehrere plots in eine Figure \\
+		subplot(H,B,Position) & Selektiert Plot in Figure mit H x B Plots\\
 	\end{tablebox}
 	\emph{Beispiel:}
 	\begin{lstlisting}[gobble=4]
@@ -297,7 +297,7 @@
 		Befehl & Funktion\\ \cmrule
 		mean(x) & Schätzt Erwartungswert $\mu$ der ZV X\\
 		var(x) & Schätzt Varianz $\Var(X)$ der ZV X\\
-		std(A) & Schätzt die Standardabweichung $\sigma$ der ZV X\\
+		std(x) & Schätzt die Standardabweichung $\sigma$ der ZV X\\
 		length(x) & Anzahl der Realisierungen der ZV X\\
 		mean(x.\^{}3) & Schätzung des 3. Moments der ZV X
 	\end{tablebox}
@@ -497,6 +497,28 @@
 	t=1:T*fS;
 	x=A1*sin(2*pi*f1/fS*t) + sigma*randn(1,fS*T);
 	\end{lstlisting}
+\end{sectionbox}
+
+\begin{sectionbox}
+	\subsection{Geschätzte Autokorrelationsfolge}
+	Gegeben:
+	\[\X_n=A_1 \sin(2\pi\frac{f}{f_s}n+\varphi_0)+\Z_n\]
+	wobei $\varphi_0$ im Intervall $[0,2\pi]$ stetig gleichverteilt ist.\\
+	\includegraphics[width = \textwidth]{img/autokorrelation-graph.png}
+	\begin{center}		
+		Geschätzte Autokorrelationsfolge von $\X_n$\\
+	\end{center}
+	\textbf{Folgerung}
+	\begin{itemize}
+		\item Schätzung der Frequenz: $f=\frac{f_s}{40}$
+		\item Der Peak bei $\tau = 0$ ist auf $\Z_n$ zurückzuführen
+		\item $\E[Z_kZ_l]=0$ für $k\ne l$
+	\end{itemize}
+	
+
+
+	
+	
 \end{sectionbox}
 
 % DOCUMENT_END =================================================================
