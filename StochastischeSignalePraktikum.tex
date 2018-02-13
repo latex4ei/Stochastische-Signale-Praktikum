@@ -1,11 +1,11 @@
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
-% Formelsammlung von LaTeX4EI									
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Formelsammlung von LaTeX4EI
 %
 % @encode: 	UTF-8, tabwidth = 4, newline = LF
 % @author:	Lukas Kompatscher
-% @date:		
+% @date:
 %
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %  
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 %-------------------------------------------%
 %  Stochastische Signale MATLAB Praktikum	%
@@ -16,8 +16,8 @@
 
 % set document information
 \title{Stochastische \\ Signale Praktikum}
-\author{Lukas Kompatscher}			
-\myemail{lukas.kompatscher@tum.de}		
+\author{Lukas Kompatscher}
+\myemail{lukas.kompatscher@tum.de}
 
 \usepackage{listings}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
@@ -46,6 +46,9 @@
 % DOCUMENT_BEGIN ===============================================================
 \begin{document}
 
+\IfFileExists{git.id}{\input{git.id}}{}
+\ifdefined\GitRevision\mydate{\GitNiceDate\ (git \GitRevision)}\fi
+
 \maketitle
 
 % SECTION ======================================================================
@@ -70,17 +73,17 @@
 %\begin{sectionbox}
 %	\subsection{Datentypkonvertierung (Karsten)}
 %	\begin{tablebox}{ll}
-%		
+%
 %		Befehl & Funktion \\\cmrule
 %		double(\textit{array}) & Umwandlung von \textit{array} in double\\
-%		
+%
 %	\end{tablebox}
 %\end{sectionbox}
 
 \begin{sectionbox}
 	\subsection{Allgemeine Rechenoperationen}
 	\begin{tablebox}{ll}
-		
+
 		Befehl & Funktion \\\cmrule
 		mod(x,y) & x modulo y (immer positiv)\\
 		rem(x,y) & x modulo y (vorzeichenabhängig)\\
@@ -118,7 +121,7 @@
 \begin{sectionbox}
 	\subsection{Komplexe Zahlen}
 	\begin{tablebox}{ll}
-		
+
 		Befehl & Funktion \\\cmrule
 		complex(a,b) & $a+jb$ \\
 		real(z) & Realteil von z\\
@@ -126,7 +129,7 @@
 		abs(z) & Betrag/Komplexe Amplitude von z\\
 		angle(z) & Phase von z\\
 		conj(z) & konjugiert komplex von z\\
-		
+
 	\end{tablebox}
 \end{sectionbox}
 
@@ -138,7 +141,7 @@
 		sind(x), cosd(x), tand(x) & x in Grad\\
 		asin(x), acos(x), atan(x) & Arcusfunktionen (Rad)\\
 		asind(x), acosd(x), antans(x) & Arcusfunktionen (Grad)\\
-		
+
 	\end{tablebox}
 \end{sectionbox}
 
@@ -174,7 +177,7 @@
 		mean($\ma A$,2) & Mittelwert der Zeilenwerte\\
 		numel($\ma A$) & Anzahl der Elemente in $\ma A$\\
 	\end{tablebox}
-	
+
 	Komponentenweises Rechnen durch einen Punkt vor einem Operator\\
 	Bsp: $\ma A$.\^{}2 quadriert jedes Element der Matrix $\ma A$\\
 	Inlinefunktion: @(x)(f(x))
@@ -265,14 +268,14 @@
 
 \begin{sectionbox}
 	\subsection{Wahrscheinlichkeitsdichtefunktion (PDF) $f_{\X}(x)$}
-	
+
 	\begin{tablebox}{ll}
 		Befehl & PDF an den Stellen x einer \dots \\\cmrule
 		unifpdf(x,a,b) & Gleichverteilung im Intervall [a,b]\\
 		poisspdf(x,lambda) & Poissonverteilung mit Parameter $\lambda$\\
 		normpdf(x,mu,sigma) & Normalverteilung mit Parameter mu und sigma\\
 		gampdf(x,k,t) & Gammaverteilung mit shape k und scale t\\
-		
+
 	\end{tablebox}
 \end{sectionbox}
 
@@ -321,7 +324,7 @@
 % ==============================================================================
 \begin{sectionbox}
 	\subsection{Audiosignalverarbeitung}
-	
+
 	\begin{tablebox}{lp{0.65\textwidth}}
 		Befehl & Funktion\\ \cmrule
 		[a,b]=audioread('....') & Liest Audiodatei in Vektor a ein (Abtastrate b)\\
@@ -340,14 +343,14 @@
 	     1     3     5     7     9    11
 	     2     4     6     8    10    12
 	\end{lstlisting}
-	
+
 	\subsubsection{Lineare Systeme}
 	\begin{tablebox}{lp{0.65\textwidth}}
 		Befehl & Funktion\\ \cmrule
 		conv(x,y) & Faltung zwischen Vektor x und y \\
 	\end{tablebox}
 %	\begin{lstlisting}[gobble=4]
-%%	
+%%
 %	\end{lstlisting}
 	conv(x,y) gibt einen Vektor der Länge length(x) + length(y) - 1 zurück
 \end{sectionbox}
@@ -366,7 +369,7 @@
 	Erwartungswertbildung (für einen einzelnen Zeitpunkt).\\\\
 	\textbf{Klingonisch}\\
 	Die klingonische Sprache ist die von Klingonen gesprochen Sprache. Sie ist im gesamten Klingonischen Imperium verbreitet.
-	
+
 \end{sectionbox}
 
 
@@ -386,7 +389,7 @@
 	Gegeben sei eine Zufallsvariable $\X$, die im Intervall $[0, 1]$ gleichverteilt ist und eine Zufallsvariable $\Y=g(X)$, deren WDF mit der folgenden Funktion ausgewertet werden kann:
 	\begin{lstlisting}[gobble=4]
 	function f = mypdf(y)
-	f=unifpdf(exp(y)).*exp(y);	
+	f=unifpdf(exp(y)).*exp(y);
 	\end{lstlisting}
 	\emph{Folgerungen:}\\
 	Die Funktion $g=g(x)=ln(x)$\\
@@ -433,7 +436,7 @@
 	 \frac{p f_{\Z}(y-1)}{f_{\Y}(y)} & x=1\\
 	\frac{(1-p)f_{\Z}(y)}{f_{\Y}(y)} & x=0\\
 	0 & \text{sonst}
-	\end{cases} 
+	\end{cases}
 	\Bigg\} = \frac{f_{\Y|\X}(y|x)p_{X}(x)}{f_{\Y}(y)}\]
 	\begin{lstlisting}[gobble=4]
 	function xhat = map_detector(y,p,sigma)
@@ -462,7 +465,7 @@
 	\[\X_m=\begin{cases}
 	\X_h & \text{wenn } B=1\\
 	\X_u & \text{wenn } B=0\\
-	\end{cases} \qquad 
+	\end{cases} \qquad
 	\Y_m=\begin{cases}
 	\Y_h & \text{wenn } B=1\\
 	\Y_u & \text{wenn } B=0\\
@@ -472,7 +475,7 @@
 \end{sectionbox}
 
 \begin{sectionbox}
-	\subsection{Empirische Realisierung von CDFs}	
+	\subsection{Empirische Realisierung von CDFs}
 	\parbox{3.5cm}{
 		\includegraphics[width = 3.5cm]{img/cdf-sample.png}
 	}
@@ -514,7 +517,7 @@
 	\[\X_n=A_1 \sin(2\pi\frac{f}{f_s}n+\varphi_0)+\Z_n\]
 	wobei $\varphi_0$ im Intervall $[0,2\pi]$ stetig gleichverteilt ist.\\
 	\includegraphics[width = \textwidth]{img/autokorrelation-graph.png}
-	\begin{center}		
+	\begin{center}
 		Geschätzte Autokorrelationsfolge von $\X_n$\\
 	\end{center}
 	\textbf{Folgerung}
@@ -523,11 +526,11 @@
 		\item Der Peak bei $\tau = 0$ ist auf $\Z_n$ zurückzuführen
 		\item $\E[Z_kZ_l]=0$ für $k\ne l$
 	\end{itemize}
-	
 
 
-	
-	
+
+
+
 \end{sectionbox}
 
 % DOCUMENT_END =================================================================
