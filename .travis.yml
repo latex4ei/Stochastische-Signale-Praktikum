@@ -21,7 +21,7 @@ before_install:
 install: true
 
 script:
-- pdflatex StochastischeSignale.tex
+- pdflatex StochastischeSignalePraktikum.tex
 - mkdir -p build
 - cd build && cmake ..; make
 
